@@ -1,152 +1,67 @@
 package barbearia.persistence;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import barbearia.entity.Servico;
+import barbearia.util.JPAUtil;
 
-public class ServicoDAO extends Conexao {
-	
-		public Servico createServico(ResultSet rs) throws Exception {
-			Servico s = new Servico(); // crio o objeto "vazio"
-			// vou carregando meu objeto
-			s.setId(rs.getInt(1));
-			s.setImagem(rs.getString(2));
-			s.setDescricao(rs.getString(3));
-			s.setValor(rs.getDouble(4));
-			return s;
-		}
-		
-		public void save(Servico s) throws SQLException {
-			Connection conn = null;
-			PreparedStatement stmt = null;
-			
-			// tentativa
-			try {
-				conn = getConnection();
-				stmt = conn.prepareStatement("insert into servico values(null, ?, ?, ?)");
-				stmt.setString(1, s.getImagem());
-				stmt.setString(2, s.getDescricao());
-				stmt.setDouble(3, s.getValor());
-				
-				int flag = stmt.executeUpdate();
-				
-				if(flag == 0)
-					throw new SQLException("Erro ao inserir no banco");
-				
-				// alternativa
-			}catch (Exception e) {
-				e.printStackTrace();
-				// obrigatorio
-			} finally {
-				if(stmt != null)
-					stmt.close();
-				if(conn != null)
-					conn.close();
-			}
-		}
-		
-		public List<Servico> lista() {
-			Connection conn = null;
-			PreparedStatement stmt = null;
-			ResultSet rs = null;
-			List<Servico> servicos = new ArrayList<Servico>();
-			try {
-				conn = getConnection();
-				stmt = conn.prepareStatement("select * from service");
-				rs = stmt.executeQuery();
-				
-				while(rs.next()) {
-					servicos.add(createServico(rs));
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				return new ArrayList<Servico>();
-			}
-			return servicos;
-		}
-		
-		public Servico busca(String nome) {
-			Connection conn = null;
-			PreparedStatement stmt = null;
-			ResultSet rs = null;
-			
-			try {
-				conn = getConnection();
-				stmt = conn.prepareStatement("select * from service where nome like ?");
-				stmt.setString(1, nome);
-				rs = stmt.executeQuery();
-				
-				if(rs.next()) {
-					return createServico(rs);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return null;
-		}
-		
-		public Servico busca(int id) {
-			Connection conn = null;
-			PreparedStatement stmt = null;
-			ResultSet rs = null;
-			
-			try {
-				conn = getConnection();
-				stmt = conn.prepareStatement("select * from service where id = ?");
-				stmt.setInt(1, id);
-				rs = stmt.executeQuery();
-				
-				if(rs.next()) {
-					return createServico(rs);
-				}
-			} catch (Exception e) {
-				
-			}
-			return null;
-		}
-		
-		public void edita(Servico s) throws SQLException {
-			Connection conn = null;
-			PreparedStatement stmt = null;
-			
-			//tentativa
-			try{
-				conn = getConnection();
-				stmt = conn.prepareStatement("UPDATE SERVICO SET imagem=?, descricao=?, valor=? WHERE id=?");
-				stmt.setString(1, s.getImagem());
-				stmt.setString(1, s.getDescricao());
-				stmt.setDouble(3, s.getValor());
-				
-			}catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				if(stmt != null)
-					stmt.close();
-				if(stmt != null);
-					conn.close();
-		}
+public class ServicoDAO {
 
+	EntityManager manager;
+
+	public ServicoDAO() {
+		manager = new JPAUtil().getEntityManager();
 	}
-
-		public void deleta(Servico s) throws SQLException{
-			Connection conn = null;
-			PreparedStatement stmt = null;
-			
-			try {
-				conn = getConnection();
-				stmt = conn.prepareStatement("DELETE FROM SERVICO where id=?");
-				stmt.setInt(1, s.getId());
-				
-			
-			} catch (Exception e) {
-				
-			} finally {
-				
-			}
-		}
+	
+	public void save(Servico s) {
+		manager.getTransaction().begin();
+		manager.persist(s);
+		manager.getTransaction().commit();
+		manager.close();
+	}
+	
+	public void update(Servico s) {
+		manager.getTransaction().begin();
+		manager.merge(s);
+		manager.getTransaction().commit();
+		manager.close();
+	}
+	
+	public void delete(Servico s) {
+		manager.getTransaction().begin();
+		manager.remove(manager.find(s.getClass(), s.getId()));
+		manager.getTransaction().commit();
+		manager.close();
+	}
+	
+	public Servico findById(Class<Servico> servico, Integer id) {
+		manager.getTransaction().begin();
+		Servico service = manager.find(servico, id);
+		manager.close();
+		return service;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Servico> findByName(String nome) {
+		manager.getTransaction().begin();
+		Query query = manager
+                .createQuery("select a from Servico a where a.login like :pName");
+		query.setParameter("pName", "%" + nome + "%");
+		List<Servico> servicos = query.getResultList();
+		manager.close();
+		return servicos;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Servico> findAll() {
+		manager.getTransaction().begin();
+		Query query = manager
+                .createQuery("select s from Servico s");
+		List<Servico> servicos = query.getResultList();
+		manager.close();
+		return servicos;
+	}
 }

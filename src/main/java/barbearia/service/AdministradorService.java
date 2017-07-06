@@ -6,13 +6,13 @@ import java.util.List;
 import barbearia.entity.Administrador;
 import barbearia.persistence.AdministradorDAO;
 
-public class AdminService implements Serializable {
+public class AdministradorService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private AdministradorDAO dao;
 
-	public AdminService() {
+	public AdministradorService() {
 		dao = new AdministradorDAO();
 	}
 

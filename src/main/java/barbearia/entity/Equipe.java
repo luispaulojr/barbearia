@@ -1,82 +1,76 @@
 package barbearia.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+@Entity
 public class Equipe implements Serializable {
-	
-	
+
+	@Transient
 	private static final long serialVersionUID = -3226125939725684416L;
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String nome;
 	private String desc;
 	private String foto;
-	private Date tempoprof; 
-	
-	//construtores
+	private Integer tempoprof;
+
 	public Equipe() {
-		
+		// TODO Auto-generated constructor stub
 	}
-	
-	public Equipe (String nome, String desc, String foto, Date tempoprof){
-		this.nome = nome;
-		this.desc = desc;
-		this.foto = foto;
-		this.tempoprof = tempoprof;
-	}
-	
-	public Equipe(Integer id, String nome, String desc, String foto, Date tempoprof){
+
+	public Equipe(Integer id, String nome, String desc, String foto, Integer tempoprof) {
 		this.id = id;
 		this.nome = nome;
 		this.desc = desc;
 		this.foto = foto;
 		this.tempoprof = tempoprof;
 	}
-	
-	@Override
-	public String toString() {	
-	return "id: " + id + "\nNome: " + nome + "\nDescrição: " + desc + "\nFoto: " + foto + "\nTempo de Profissão: " + tempoprof;
-	}
-	
-	//get e set
+
 	public Integer getId() {
 		return id;
 	}
-	
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
-	
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public String getDesc() {
 		return desc;
 	}
-	
+
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-	
+
 	public String getFoto() {
 		return foto;
 	}
-	
+
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-	
-	public Date getTempoprof() {
+
+	public Integer getTempoprof() {
 		return tempoprof;
 	}
-	
-	public void setTempoprof(Date tempoprof) {
+
+	public void setTempoprof(Integer tempoprof) {
 		this.tempoprof = tempoprof;
 	}
 
@@ -104,7 +98,4 @@ public class Equipe implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-
 }

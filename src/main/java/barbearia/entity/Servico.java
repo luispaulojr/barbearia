@@ -2,18 +2,27 @@ package barbearia.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+@Entity
 public class Servico implements Serializable {
 
-	
+	@Transient
 	private static final long serialVersionUID = -2247409576320964886L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String imagem;
 	private String descricao;
 	private Double valor;
 
-	// construtor
 	public Servico() {
-
+		// TODO Auto-generated constructor stub
 	}
 
 	public Servico(Integer id, String imagem, String descricao, Double valor) {

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import barbearia.entity.Administrador;
-import barbearia.service.AdminService;
+import barbearia.service.AdministradorService;
 
 
 @WebServlet({ "/login", "/logout", "/atualizarsenha", "/testeform"})
@@ -40,7 +40,7 @@ public class AdminServlet extends HttpServlet {
 			String login = request.getParameter("login");
 			String senha = request.getParameter("senha");
 			
-			new AdminService().save(new Administrador(login, senha));
+			new AdministradorService().save(new Administrador(login, senha));
 			
 			/*if(login.toLowerCase().equals("lpjr") && senha.equals("123")) {
 				out.println("<h1>Logado</h1>");

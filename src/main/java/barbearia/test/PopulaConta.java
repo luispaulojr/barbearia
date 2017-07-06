@@ -1,7 +1,7 @@
 package barbearia.test;
 
 import barbearia.entity.Administrador;
-import barbearia.service.AdminService;
+import barbearia.service.AdministradorService;
 
 public class PopulaConta {
 
@@ -20,7 +20,7 @@ public class PopulaConta {
 
 		admin3.setLogin("lpjunior");
 		admin3.setSenha("123");
-		AdminService as = new AdminService();
+		AdministradorService as = new AdministradorService();
 //		admin = as.busca(Administrador.class, admin.getId());
 //		as.save(admin1);
 //		as.save(admin2);
