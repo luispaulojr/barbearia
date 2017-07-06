@@ -1,28 +1,31 @@
 package barbearia.test;
 
-import javax.persistence.EntityManager;
-
 import barbearia.entity.Administrador;
-import barbearia.util.JPAUtil;
+import barbearia.service.AdminService;
 
 public class PopulaConta {
 
 	public static void main(String[] args) {
 
-		EntityManager manager = new JPAUtil().getEntityManager();
+		Administrador admin1 = new Administrador();
+		Administrador admin2 = new Administrador();
+		Administrador admin3 = new Administrador();
 
-		manager.getTransaction().begin();
-
-		Administrador admin = new Administrador();
-
-		admin.setLogin("lpjr");
-		admin.setSenha("123");
+//		admin.setId(1);
+		admin1.setLogin("luispaulojr");
+		admin1.setSenha("123");
 		
-		manager.persist(admin);
+		admin2.setLogin("lpjr");
+		admin2.setSenha("123");
 
-		manager.getTransaction().commit();
-
-		manager.close();
-
+		admin3.setLogin("lpjunior");
+		admin3.setSenha("123");
+		AdminService as = new AdminService();
+//		admin = as.busca(Administrador.class, admin.getId());
+//		as.save(admin1);
+//		as.save(admin2);
+//		as.save(admin3);
+//		System.out.println(admin.getLogin());
+		as.busca().forEach(System.out::println);
 	}
 }

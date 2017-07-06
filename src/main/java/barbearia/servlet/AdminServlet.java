@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import barbearia.entity.Administrador;
-import service.AdminService;
+import barbearia.service.AdminService;
 
 
 @WebServlet({ "/login", "/logout", "/atualizarsenha", "/testeform"})
