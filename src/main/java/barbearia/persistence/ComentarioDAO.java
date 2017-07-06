@@ -45,7 +45,7 @@ public class ComentarioDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Comentario> findByLogin(String nome) {
+	public List<Comentario> findByName(String nome) {
 		manager.getTransaction().begin();
 		Query query = manager
                 .createQuery("select c from Comentario c where c.nome like :pName");
@@ -56,7 +56,7 @@ public class ComentarioDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Comentario> findByAtivo() {
+	public List<Comentario> findAtivo() {
 		manager.getTransaction().begin();
 		Query query = manager
                 .createQuery("select c from Comentario c where c.nome like :pActive");
