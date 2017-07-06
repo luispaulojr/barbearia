@@ -26,6 +26,6 @@ public class PopulaConta {
 //		as.save(admin2);
 //		as.save(admin3);
 //		System.out.println(admin.getLogin());
-		as.busca().forEach(System.out::println);
+		as.buscaLogin("l").forEach(System.out::println);
 	}
 }

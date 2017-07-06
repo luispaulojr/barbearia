@@ -48,8 +48,8 @@ public class AdministradorDAO {
 	public List<Administrador> findByLogin(String login) {
 		manager.getTransaction().begin();
 		Query query = manager
-                .createQuery("select a from Administrador a where a.login = :pLogin");
-		query.setParameter("pLogin", login);
+                .createQuery("select a from Administrador a where a.login like :pLogin");
+		query.setParameter("pLogin", "%" + login + "%");
 		List<Administrador> administradores = query.getResultList();
 		manager.close();
 		return administradores;
