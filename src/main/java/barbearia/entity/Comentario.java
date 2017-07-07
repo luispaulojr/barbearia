@@ -43,6 +43,12 @@ public class Comentario implements Serializable {
 		this.nota = nota;
 	}
 
+	@Override
+	public String toString() {
+		return "Comentario [id=" + id + ", nome=" + nome + ", comentario=" + comentario + ", bairro=" + bairro
+				+ ", ativo=" + ativo + ", nota=" + nota + "]";
+	}
+
 	public Integer getId() {
 		return id;
 	}

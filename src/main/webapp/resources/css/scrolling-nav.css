@@ -15,14 +15,14 @@ html {
     /*height: 100%;*/
     padding-top:20px;
     text-align: center;
-    /*background: ;*/
+
     margin-bottom:10%;
 }
 
 /* INICIO CSS SOBRE */
 .sobre-section {
     /*height: 100%;*/
-    padding-top:80px;
+    padding-top:90px;
     text-align: center;
     /*background:;*/
 }
@@ -54,6 +54,10 @@ html {
 	.centralizar{
 		text-align:center;
 	}
+  .formtacao-container-sobre{
+   
+    
+  }
 /* FIM CSS SOBRE */
 
 /* INICIO CSS EQUIPE */
@@ -100,6 +104,9 @@ html {
   width: 50px;
   color:red;
 }
+.img-quipe{
+  border-radius: 1px;
+}
 /* FIM CSS EQUIPE */
 
 /* INICIO DO CSS GALERIA */
@@ -121,7 +128,7 @@ html {
 
 /* INICIO DO CSS SERVI�OS */
 .servicos-section {
-	background-image:url(resources/image/img3.jpg);
+	background-image:url('resources/image/img3.jpg');
 
     /*height: 100%;*/
     padding-top:75px;
@@ -133,8 +140,31 @@ html {
     color: #fff;
 }
 .img-servicos{
-    margin-bottom:4%;
-    margin-top: 2%;
+    margin-bottom:30px;
+    margin-top:10px;
+   
+}
+.img-servicos-ativo{
+   border-bottom: 1px solid #fff;
+   border-right: 1px solid #fff;
+   border-left: 1px solid #fff;
+   border-radius: 4px;
+   border-right: 1px solid #fff;
+   border-left: 1px solid #fff;
+   border-top: 1px solid #fff;
+   box-shadow: 5px 5px 10px #0076a3;
+   -webkit-box-shadow: 5px 5px 10px #242323;
+   -moz-box-shadow: 5px 5px 10px #242323;
+   padding-bottom: 10px;
+}
+.descricao-servico{
+    margin-top:20px;
+    
+    width: 10px;
+
+}
+.descricao-servico-valor{
+  width: 10px;
 }
 /* FIM DO CSS SERVI�OS */
 
@@ -194,6 +224,7 @@ html {
     color: #fff;
 }
 .fale-conosco{
+  background-image: linear-gradient(  #232424,#232220,#232020);
     background-color:rgba(192,192,192,.4);
     padding:3%;
     border-radius:10px;
