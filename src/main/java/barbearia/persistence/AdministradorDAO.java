@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import barbearia.entity.Administrador;
+import barbearia.util.EncriptarMD5;
 import barbearia.util.JPAUtil;
 
 public class AdministradorDAO {
@@ -17,6 +18,7 @@ public class AdministradorDAO {
 	}
 	
 	public void save(Administrador a) {
+		a.setSenha(EncriptarMD5.encriptar(a.getSenha()));
 		manager.getTransaction().begin();
 		manager.persist(a);
 		manager.getTransaction().commit();
@@ -44,15 +46,15 @@ public class AdministradorDAO {
 		return admin;
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Administrador> findByLogin(String login) {
+	public Administrador findByLogin(Administrador a) {
 		manager.getTransaction().begin();
 		Query query = manager
-                .createQuery("select a from Administrador a where a.login like :pLogin");
-		query.setParameter("pLogin", "%" + login + "%");
-		List<Administrador> administradores = query.getResultList();
+                .createQuery("select a from Administrador a where a.login like :pLogin and a.senha = :pSenha");
+		query.setParameter("pLogin", a.getLogin());
+		query.setParameter("pSenha", EncriptarMD5.encriptar(a.getSenha()));
+		Administrador administrador = (Administrador) query.getSingleResult();
 		manager.close();
-		return administradores;
+		return administrador;
 	}
 	
 	@SuppressWarnings("unchecked")

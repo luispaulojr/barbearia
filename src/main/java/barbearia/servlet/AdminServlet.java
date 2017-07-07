@@ -8,12 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import barbearia.entity.Administrador;
 import barbearia.service.AdministradorService;
 
 
-@WebServlet({ "/login", "/logout", "/atualizarsenha", "/testeform"})
+@WebServlet({ "/admin", "/login", "/logout", "/atualizarsenha", "/testeform"})
 public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -21,16 +22,12 @@ public class AdminServlet extends HttpServlet {
     public AdminServlet() {
         super();
     }
-
-    
-    
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		doPost(request, response);
-		
+		if(request.getServletPath().equals("/admin"))
+			request.getRequestDispatcher("admin.html").forward(request, response);
 	}
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -40,7 +37,12 @@ public class AdminServlet extends HttpServlet {
 			String login = request.getParameter("login");
 			String senha = request.getParameter("senha");
 			
-			new AdministradorService().save(new Administrador(login, senha));
+			HttpSession session = request.getSession();
+			
+			if(new AdministradorService().buscaLogin(new Administrador(login, senha)) != null)
+				out.println("Login efetuado");
+			else
+				out.println("Falha ao logar");
 			
 			/*if(login.toLowerCase().equals("lpjr") && senha.equals("123")) {
 				out.println("<h1>Logado</h1>");

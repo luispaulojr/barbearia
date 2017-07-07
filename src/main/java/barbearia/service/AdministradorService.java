@@ -35,8 +35,8 @@ public class AdministradorService implements Serializable {
 		return dao.findById(administrador, id);
 	}
 	
-	public List<Administrador> buscaLogin(String login) {
-		return dao.findByLogin(login);
+	public Administrador buscaLogin(Administrador a) {
+		return dao.findByLogin(a);
 	}
 	
 	public List<Administrador> busca() {

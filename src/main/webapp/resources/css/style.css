@@ -1,15 +1,76 @@
 body {
-    position: relative; 
+    position: relative;
 }
 .affix {
     top:0;
+    
     width: 100%;
     z-index: 9999 !important;
 }
+
+.nav{
+	text-align:center;
+}
 .navbar {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
+	border: 1px solid #000;
+
 }
 
+.navbar-default{
+	background-color:#242323;
+}
+@media (min-width: 768px){
+
+.navbar {
+	border-radius:0;
+	color:#fff;
+  text-transform: uppercase;
+
+	}
+}
+.navbar-default .navbar-brand{
+	color:#fff;
+}
+.navbar-default .navbar-nav li a{
+	color:#fff;
+}
+.navbar .navbar-nav .active{
+    background-color: none;
+}
+/*  */
+.navbar-default .navbar-nav .active a{
+    background-color: none;
+}
+/* Formatação: fundo ao passar o mouse. Fonte e borda ao passar o mouse*/
+.navbar-default .navbar-nav .active a,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color:#298E1B;
+    background-color:none;
+    border-bottom: 6px solid #298E1B;
+
+}
+/* Formatação: cor fica fixa quando selecionado a opção no menu*/
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover {
+	background-color:#242323;
+}
+.centralizar{
+    margin-top: 12px;
+}
+.navbar-default .navbar-nav .active .logotipo-menu a,
+.navbar-default .navbar-nav > li > .logotipo-menu a:hover,
+.navbar-default .navbar-nav > li > .logotipo-menu a:focus {
+    color:#298E1B;
+    background-color:none;
+      border-bottom: 0;
+}
+.logotipo-menu a{
+
+
+}
 .affix ~ .container-fluid {
     position: relative;
     top: 50px;
@@ -19,7 +80,9 @@ body {
 	height: 100%;
 	width: 100%;
 }
-
+#brand-menu{
+    float: left;
+}
 #btn-top{
     padding:10px;
     position:fixed;
@@ -267,4 +330,110 @@ all and (min-width: 992px) and (-webkit-transform-3d) {
 }
 .img-depo-user{
 	margin-bottom:5%;
+}
+/* carousel */
+#quote-carousel
+{
+  padding: 0 10px 30px 10px;
+  margin-top: 30px;
+}
+
+/* Control buttons  */
+#quote-carousel .carousel-control
+{
+  background: none;
+  color: #222;
+  font-size: 2.3em;
+  text-shadow: none;
+  margin-top: 30px;
+}
+/* Previous button  */
+#quote-carousel .carousel-control.left
+{
+  left: -12px;
+}
+/* Next button  */
+#quote-carousel .carousel-control.right
+{
+  right: -12px !important;
+}
+/* Changes the position of the indicators */
+#quote-carousel .carousel-indicators
+{
+  right: 5s0%;
+  top: auto;
+  bottom: 0px;
+  margin-right: -19px;
+}
+/* Changes the color of the indicators */
+#quote-carousel .carousel-indicators li
+{
+  background: #c0c0c0;
+}
+#quote-carousel .carousel-indicators .active
+{
+  background: #333333;
+}
+#quote-carousel img
+{
+  width: 250px;
+  height: 100px
+}
+/* End carousel */
+
+.item blockquote {
+    border-left: none;
+    margin: 0;
+}
+
+.item blockquote img {
+    margin-bottom: 10px;
+}
+
+.item blockquote p:before {
+    content: "\f10d";
+    font-family: 'Fontawesome';
+    float: left;
+    margin-right: 10px;
+}
+
+
+
+/**
+  MEDIA QUERIES
+*/
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    #quote-carousel
+    {
+      margin-bottom: 0;
+      padding: 0 40px 30px 40px;
+    }
+
+}
+
+/* Small devices (tablets, up to 768px) */
+@media (max-width: 768px) {
+
+    /* Make the indicators larger for easier clicking with fingers/thumb on mobile */
+
+    #quote-carousel .carousel-indicators {
+        bottom: -20px !important;
+    }
+    #quote-carousel .carousel-indicators li {
+        display: inline-block;
+        margin: 0px 5px;
+        width: 15px;
+        height: 15px;
+    }
+    #quote-carousel .carousel-indicators li.active {
+        margin: 0px 5px;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.logotipo-menu{
+
 }

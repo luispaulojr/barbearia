@@ -18,7 +18,7 @@ public class Equipe implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String nome;
-	private String desc;
+	private String descricao;
 	private String foto;
 	private Integer tempoprof;
 
@@ -26,10 +26,10 @@ public class Equipe implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Equipe(Integer id, String nome, String desc, String foto, Integer tempoprof) {
+	public Equipe(Integer id, String nome, String descricao, String foto, Integer tempoprof) {
 		this.id = id;
 		this.nome = nome;
-		this.desc = desc;
+		this.descricao = descricao;
 		this.foto = foto;
 		this.tempoprof = tempoprof;
 	}
@@ -50,12 +50,12 @@ public class Equipe implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public String getFoto() {
