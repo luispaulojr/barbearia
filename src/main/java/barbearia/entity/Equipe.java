@@ -2,6 +2,7 @@ package barbearia.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,8 @@ public class Equipe implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String nome;
-	private String descricao;
+	@Column(name="descricao")
+	private String desc;
 	private String foto;
 	private Integer tempoprof;
 
@@ -26,10 +28,10 @@ public class Equipe implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Equipe(Integer id, String nome, String descricao, String foto, Integer tempoprof) {
+	public Equipe(Integer id, String nome, String desc, String foto, Integer tempoprof) {
 		this.id = id;
 		this.nome = nome;
-		this.descricao = descricao;
+		this.desc = desc;
 		this.foto = foto;
 		this.tempoprof = tempoprof;
 	}
@@ -50,12 +52,12 @@ public class Equipe implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getDesc() {
+		return desc;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 
 	public String getFoto() {

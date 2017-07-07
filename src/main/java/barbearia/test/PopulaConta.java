@@ -23,9 +23,9 @@ public class PopulaConta {
 		AdministradorService as = new AdministradorService();
 //		admin = as.busca(Administrador.class, admin.getId());
 //		as.save(admin1);
-//		as.save(admin2);
+		as.save(admin2);
 //		as.save(admin3);
 //		System.out.println(admin.getLogin());
-		System.out.println(as.buscaLogin(admin2));
+//		System.out.println(as.buscaLogin(admin2));
 	}
 }
