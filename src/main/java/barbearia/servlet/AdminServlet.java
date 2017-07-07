@@ -43,12 +43,6 @@ public class AdminServlet extends HttpServlet {
 				out.println("Login efetuado");
 			else
 				out.println("Falha ao logar");
-			
-			/*if(login.toLowerCase().equals("lpjr") && senha.equals("123")) {
-				out.println("<h1>Logado</h1>");
-			} else {
-				out.print("<h1> Falha ao efetuar o login</h1>");
-			}*/
 		}
 	}
 

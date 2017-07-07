@@ -59,7 +59,7 @@ public class ComentarioDAO {
 	public List<Comentario> findAtivo() {
 		manager.getTransaction().begin();
 		Query query = manager
-                .createQuery("select c from Comentario c where c.nome like :pActive");
+                .createQuery("select c from Comentario c where c.ativo = :pActive");
 		query.setParameter("pActive", true);
 		List<Comentario> comentarios = query.getResultList();
 		manager.close();

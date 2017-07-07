@@ -25,7 +25,7 @@ public class Comentario implements Serializable {
 	private String comentario;
 	@Column(nullable = false)
 	private String bairro;
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "bit default 0")
 	private boolean ativo;
 	@Column(nullable = false)
 	private int nota;
