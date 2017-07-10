@@ -49,7 +49,7 @@ public class AdministradorDAO {
 	public Administrador findByLogin(Administrador a) {
 		manager.getTransaction().begin();
 		Query query = manager
-                .createQuery("select a from Administrador a where a.login like :pLogin and a.senha = :pSenha");
+                .createQuery("select a.id, a.login from Administrador a where a.login like :pLogin and a.senha = :pSenha");
 		query.setParameter("pLogin", a.getLogin());
 		query.setParameter("pSenha", EncriptarMD5.encriptar(a.getSenha()));
 		Administrador administrador = (Administrador) query.getSingleResult();

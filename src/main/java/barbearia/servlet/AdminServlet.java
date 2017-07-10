@@ -1,7 +1,6 @@
 package barbearia.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,18 +30,19 @@ public class AdminServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		PrintWriter out = response.getWriter();
-		
 		if(request.getServletPath().equals("/login")){
 			String login = request.getParameter("login");
 			String senha = request.getParameter("senha");
 			
 			HttpSession session = request.getSession();
+			if(new AdministradorService().buscaLogin(new Administrador(login, senha)) != null) {
+				session.setAttribute("usuario", new AdministradorService().buscaLogin(new Administrador(login, senha)));
+				request.getRequestDispatcher("sistema.jsp").forward(request, response);
+			} else {
+				request.getRequestDispatcher("403.html").forward(request, response);
+			}
+		} else if(request.getServletPath().equals("/login")){
 			
-			if(new AdministradorService().buscaLogin(new Administrador(login, senha)) != null)
-				out.println("Login efetuado");
-			else
-				out.println("Falha ao logar");
 		}
 	}
 
