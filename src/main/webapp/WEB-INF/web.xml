@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>AppServlet</servlet-name>
+  	<display-name>AppServlet</display-name>
+  	<description></description>
+  	<servlet-class>barbearia.servlet.AppServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AppServlet</servlet-name>
+  	<url-pattern>/</url-pattern>
+  </servlet-mapping>
 </web-app>
